@@ -159,10 +159,32 @@ def stringDisplay(string,line)
 	message = message.ljust(LCD_WIDTH," ")
 	instCtrl(line)
 	for x in range(len(string)):
-		lcd_byte(ord(message[i]),LCD_CHR)
+		dataCtrl(ord(message[i])
 		
 
 def main():
 	GPIO.setmode(GPIO.BCM) 
 	
 	initLCD()
+	
+	while True:
+ 
+		# Send some centred test
+		stringDisplay("--------------------",LCD_LINE_1,2)
+		stringDisplay("Rasbperry Pi",LCD_LINE_2,2)
+		stringDisplay("Model B",LCD_LINE_3,2)
+		stringDisplay("--------------------",LCD_LINE_4,2)
+	 
+		sleep(3) # 3 second delay
+	 
+		stringDisplay("Raspberrypi-spy",LCD_LINE_1,3)
+		stringDisplay(".co.uk",LCD_LINE_2,3)
+		stringDisplay("",LCD_LINE_3,2)
+		stringDisplay("20x4 LCD Module Test",LCD_LINE_4,2)
+	 
+		sleep(3) # 20 second delay
+	 
+		# Blank display
+		lcd_byte(0x01, LCD_CMD)
+	 
+		sleep(3) # 3 second delay
